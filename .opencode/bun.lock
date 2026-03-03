@@ -1,0 +1,21 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "dependencies": {
+        "@opencode-ai/plugin": "1.1.54",
+        "oh-my-opencode-darwin-arm64": "^3.2.4",
+      },
+    },
+  },
+  "packages": {
+    "@opencode-ai/plugin": ["@opencode-ai/plugin@1.1.54", "", { "dependencies": { "@opencode-ai/sdk": "1.1.54", "zod": "4.1.8" } }, "sha512-qT8mdybi26HKI8ErfFmiVb8oefv7xwskiJ2EtVcCKlx9LUfzJPB7wg5KfJz98Wc7B1k9wC2eKgIbYZc0PAvsZw=="],
+
+    "@opencode-ai/sdk": ["@opencode-ai/sdk@1.1.54", "", {}, "sha512-qjyD9NbJDRYK7hUmlpYymOh/TMF/Lgnew6tqLfm6TJFUnEO/V1BszQwDD1NOzbgflVeE2OBFpavyjxsreCalIQ=="],
+
+    "oh-my-opencode-darwin-arm64": ["oh-my-opencode-darwin-arm64@3.2.4", "", { "os": "darwin", "cpu": "arm64", "bin": { "oh-my-opencode": "bin/oh-my-opencode" } }, "sha512-6vG49R/nkbZYhAqN2oStA+8reZRo2KPPHSbhQd4htdEpzS4ipVz6pW/YTj/TDwunQO7hy66AhP9hOR4pJcoDeA=="],
+
+    "zod": ["zod@4.1.8", "", {}, "sha512-5R1P+WwQqmmMIEACyzSvo4JXHY5WiAFHRMg+zBZKgKS+Q1viRa0C1hmUKtHltoIFKtIdki3pRxkmpP74jnNYHQ=="],
+  }
+}

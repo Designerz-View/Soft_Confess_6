@@ -1,0 +1,34 @@
+import '@testing-library/jest-dom';
+import { afterEach, vi } from 'vitest';
+import { cleanup } from '@testing-library/react';
+
+// Cleanup after each test
+afterEach(() => {
+  cleanup();
+});
+
+// Mock window.matchMedia for confetti tests
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: vi.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+});
+
+// Mock canvas-confetti
+vi.mock('canvas-confetti', () => ({
+  default: vi.fn().mockResolvedValue(null),
+}));
+
+// Mock EmailJS
+vi.mock('@emailjs/browser', () => ({
+  init: vi.fn(),
+  send: vi.fn().mockResolvedValue({ status: 200 }),
+}));

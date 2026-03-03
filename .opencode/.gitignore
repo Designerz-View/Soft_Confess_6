@@ -1,0 +1,5 @@
+node_modules/
+
+# local top level configs, to override global/project opencode, can include secrets
+opencode.json*
+oh-my-opencode.json.bak*

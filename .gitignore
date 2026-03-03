@@ -1,0 +1,20 @@
+# ide
+.idea
+.vscode
+
+# env
+.env
+.env.local
+.env.*.local
+
+# tmp
+.DS_Store
+/tmp
+/cache
+
+# project
+dbdev
+/playwright
+docker-compose.override.yml
+node_modules
+dist/

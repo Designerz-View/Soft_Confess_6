@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Quiz Results</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 20px;">
+  
+  <!-- Main Container -->
+  <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);">
+    
+    <!-- Header with Gradient -->
+    <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 40px 30px; text-align: center; position: relative;">
+      <div style="font-size: 48px; margin-bottom: 10px;">💕</div>
+      <h1 style="margin: 0; color: white; font-size: 28px; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+        Valentine's Day Quiz Results
+      </h1>
+      <p style="margin: 10px 0 0; color: rgba(255,255,255,0.95); font-size: 16px; font-weight: 500;">
+        Someone just completed the quiz! 🎉
+      </p>
+    </div>
+
+    <!-- Content -->
+    <div style="padding: 40px 30px;">
+      
+      <!-- Participant Info -->
+      <div style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); border-radius: 12px; padding: 20px; margin-bottom: 30px; border-left: 4px solid #f5576c;">
+        <h2 style="margin: 0 0 15px; color: #d63447; font-size: 18px; font-weight: 600;">
+          👤 Participant Details
+        </h2>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 8px 0; color: #666; font-weight: 600; width: 120px;">Name:</td>
+            <td style="padding: 8px 0; color: #333; font-weight: 700;">{{user_name}}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; color: #666; font-weight: 600;">Submitted:</td>
+            <td style="padding: 8px 0; color: #333;">{{timestamp}}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; color: #666; font-weight: 600;">"No" clicks:</td>
+            <td style="padding: 8px 0; color: #333; font-weight: 700;">{{no_count}} times 😏</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Quiz Answers -->
+      <div style="margin-bottom: 30px;">
+        <h2 style="margin: 0 0 20px; color: #333; font-size: 20px; font-weight: 600; display: flex; align-items: center;">
+          <span style="margin-right: 10px;">💝</span>
+          Quiz Answers
+        </h2>
+        
+        <div style="background: #ffffff; border-radius: 12px; padding: 25px; border: 2px solid #e9ecef; font-size: 15px; line-height: 1.8; color: #333;">{{{answers}}}</div>
+      </div>
+
+      <!-- Love Letter -->
+      {{#love_letter}}
+      <div style="margin-bottom: 30px; background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); border-radius: 12px; padding: 25px; border-left: 4px solid #667eea;">
+        <h2 style="margin: 0 0 15px; color: #5a67d8; font-size: 18px; font-weight: 600; display: flex; align-items: center;">
+          <span style="margin-right: 10px;">💌</span>
+          Love Letter
+        </h2>
+        <div style="background: white; border-radius: 8px; padding: 20px; font-family: Georgia, 'Times New Roman', serif; font-style: italic; line-height: 1.9; color: #4a5568; white-space: pre-wrap;">{{love_letter}}</div>
+      </div>
+      {{/love_letter}}
+
+      <!-- Score Section -->
+      <div style="text-align: center; padding: 30px 0; border-top: 2px dashed #e9ecef; border-bottom: 2px dashed #e9ecef; margin: 20px 0;">
+        <div style="font-size: 48px; font-weight: 800; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px;">
+          100%
+        </div>
+        <div style="color: #666; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+          Perfect Love Score ❤️
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="https://millon15.github.io/valentine-2026/" 
+           style="display: inline-block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; text-decoration: none; padding: 14px 40px; border-radius: 25px; font-weight: 600; font-size: 16px; box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4); transition: transform 0.2s;">
+          View Live Quiz 💕
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div style="background: #f8f9fa; padding: 25px 30px; text-align: center; border-top: 1px solid #e9ecef;">
+      <p style="margin: 0 0 10px; color: #6c757d; font-size: 14px;">
+        💝 Sent from <strong style="color: #d63447;">Valentine's Day Quiz 2026</strong>
+      </p>
+      <p style="margin: 0; color: #adb5bd; font-size: 12px;">
+        Built with ❤️ using React, TypeScript, and EmailJS
+      </p>
+      <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #dee2e6;">
+        <a href="https://github.com/Millon15/valentine-2026" 
+           style="color: #667eea; text-decoration: none; font-size: 13px; font-weight: 600;">
+          ⭐ Star on GitHub
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Decorative Hearts -->
+  <div style="text-align: center; margin-top: 20px; font-size: 24px; opacity: 0.8;">
+    💕 💗 💖 💝 💓
+  </div>
+
+</body>
+</html>

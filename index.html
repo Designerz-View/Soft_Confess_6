@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta property="og:title" content="Valentine 2026 - Will you be my Valentine?" />
+    <meta property="og:description" content="A special question for a special person." />
+    <meta property="og:image" content="https://millon15.github.io/valentine-2026/thumbnail.jpg" />
+    <meta property="og:url" content="https://millon15.github.io/valentine-2026/" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://millon15.github.io/valentine-2026/thumbnail.jpg" />
+
+    <title>Valentine's Day Quiz</title>
+    <script>
+      // Set theme class before first paint to prevent flash of wrong theme.
+      // Follows: stored preference > system preference > light default.
+      (function() {
+        const s = localStorage.getItem('theme');
+        if (s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

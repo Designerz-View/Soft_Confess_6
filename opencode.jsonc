@@ -1,0 +1,261 @@
+{
+  // !!! You can ovverride any settings below via gitignored: ".opencode/opencode.jsonc"
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "oh-my-opencode@3.2.4"
+    // "opencode-agent-skills@0.5.0" // @latest == @0.6.4, but it's buggy
+  ],
+  "instructions": [
+    ".opencode/rules/**",
+    ".claude/rules/**"
+  ],
+  "watcher": {
+    "ignore": [
+      ".opencode/secrets/**",
+      ".opencode/local/**",
+      ".opencode/cache/**",
+      ".opencode/temp/**",
+      "tmp/**",
+      "cache/**",
+      "node_modules/**",
+      "vendor/**",
+      "vendor-bin/*",
+      "dist/**",
+      ".DS_Store",
+      ".git/**",
+      "**/__pycache__/**",
+      "CLAUDE.md",
+      ".claude/CLAUDE.md",
+      ".cursor/*"
+    ]
+  },
+  //
+  // Oh My OpenCode Manifesto
+  // From https://github.com/code-yeongyu/oh-my-opencode/blob/dev/docs/ultrawork-manifesto.md
+  //
+  // All this long comment is REGARDING: oh-my-opencode.json (because we cannot comment inside JSON files)
+  // oh-my-opencode.json config help: https://github.com/code-yeongyu/oh-my-opencode/blob/dev/docs/configurations.md
+  //
+  // # The Core Loop
+  //    Human Intent → Agent Execution → Verified Result
+  //    ↑                              ↓
+  //    └──────── Minimum ─────────────┘
+  //    (intervention only on true failure)
+  //
+  // Everything in Oh My OpenCode is designed to make this loop work:
+  //
+  // +Agent+-----------+Purpose+
+  // sisyphus           Master planner and executor (MAIN agent)
+  // prometheus         Extract intent through intelligent interview
+  // metis              Catch ambiguities before they become bugs
+  // momus              Verify plans are complete before execution
+  // atlas              Coordinate work without human micromanagement (orchestrator)
+  // oracle             Consultation (debugging)
+  // librarian          Research documentation and codebases
+  // explore            Fast codebase search and retrieval
+  // multimodal-looker  Looker  Analyze images, diagrams, PDFs
+  //
+  // +Feature+------------+Purpose+
+  // To do Continuation    Force completion, prevent "I'm done" lies
+  // Category System       Route to optimal model without human decision
+  // Background Agents     Parallel research without blocking user
+  // Wisdom Accumulation   Learn from work, don't repeat mistakes
+  //
+  "mcp": {
+    // already included in opencode & oh-my-opencode
+    // "websearch": {
+    // "grep_app": {
+    // "context7": {
+
+    // opencode docs about auth options for MCP servers: https://opencode.ai/docs/mcp-servers/#examples
+    "github": {
+      "type": "local",
+      "command": [
+        "docker",
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "environment": {
+        // https://github.com/github/github-mcp-server?tab=readme-ov-file#prerequisites-1
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "{env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+      },
+      "enabled": true
+    }
+  },
+  "permission": {
+    "external_directory": "deny",
+    "doom_loop": "deny",
+    "edit": "allow",
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.dev": "allow",
+      "*.env.test": "allow",
+      "*.env.example": "allow"
+    },
+    "webfetch": "allow",
+    "agent": {
+      "build": "ask"
+    },
+    "bash": {
+      // DEFAULT: ask!
+      "*": "ask",
+
+      // dangerous commands: deny
+      "rm *": "deny",
+      "rmdir *": "deny",
+
+      // safe navigation
+      "opencode *": "allow",
+      "openspec *": "allow",
+      "ls": "allow",
+      "ls *": "allow",
+      "eza": "allow",
+      "eza *": "allow",
+      "pwd": "allow",
+      "whoami": "allow",
+      "id": "allow",
+      "hostname": "allow",
+      "uname *": "allow",
+      "date": "allow",
+      "cd *": "allow",
+      "find *": "allow",
+      "fzf *": "allow",
+      "grep *": "allow",
+      "cat *": "allow",
+      "echo *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "tree *": "allow",
+      "stat *": "allow",
+      "wc *": "allow",
+      "du *": "allow",
+      "df *": "allow",
+      "file *": "allow",
+      "which *": "allow",
+      "type *": "allow",
+      "readlink *": "allow",
+      "realpath *": "allow",
+      "mkdir *": "allow",
+      "date *": "allow",
+      "sort *": "allow",
+      "true": "allow",
+      "rg *": "allow",
+      "lsof *": "allow",
+      "less *": "allow",
+      "more *": "allow",
+      "diff *": "allow",
+      "md5sum *": "allow",
+      "sha1sum *": "allow",
+      "sha256sum *": "allow",
+      "cut *": "allow",
+      "tee *": "allow",
+      "xargs *": "allow",
+      "basename *": "allow",
+      "dirname *": "allow",
+      "env *": "allow",
+      "tr *": "allow",
+      "printf *": "allow",
+      "curl *": "allow",
+      "wget *": "allow",
+      "ping *": "allow",
+      "nslookup *": "allow",
+      "dig *": "allow",
+      "top *": "allow",
+      "htop *": "allow",
+      "uptime *": "allow",
+      "vmstat *": "allow",
+      "free *": "allow",
+      "comm *":  "allow",
+      "uniq *": "allow",
+      "sed *": "allow",
+      "awk *": "allow",
+      "read *": "allow",
+      "jq *": "allow",
+      "test *": "allow",
+
+      // git RO
+      "git *": "ask",
+      "git status": "allow",
+      "git diff": "allow",
+      "git diff *": "allow",
+      "git log": "allow",
+      "git log *": "allow",
+      "git branch": "allow",
+      "git show *": "allow",
+      "git rev-parse *": "allow",
+      "git status *": "allow",
+      "git merge-base *": "allow",
+      "git remote -v": "allow",
+      "git tag": "allow",
+      "git ls-tree *": "allow",
+      "git grep *": "allow",
+      "git cat-file *": "allow",
+      "git rev-list *": "allow",
+      "git shortlog *": "allow",
+      "git describe *": "allow",
+      "git for-each-ref *": "allow",
+      "git show-ref *": "allow",
+
+      // gh cli read
+      "gh *": "ask",
+      "gh repo view *": "allow",
+      "gh repo list *": "allow",
+      "gh pr list *": "allow",
+      "gh pr view *": "allow",
+      "gh issue list *": "allow",
+      "gh issue view *": "allow",
+      "gh gist list *": "allow",
+      "gh gist view *": "allow",
+      "gh api *": "allow",
+
+      // docker
+      "docker *": "ask",
+      "docker run *": "allow",
+      "docker ps": "allow",
+      "docker ps *": "allow",
+      "docker exec *": "allow",
+      "docker logs *": "allow",
+      "docker compose ps": "allow",
+
+      // make
+      "make *": "ask",
+      "make status": "allow",
+
+      // npm
+      "npx *": "ask",
+      "npmx *": "ask",
+      "npm run dev": "allow",
+      "npm run serve": "allow",
+      "npm run build": "ask",
+      "npm run lint": "allow",
+      "npm run test*": "allow",
+      "npm install": "allow",
+      "npm ci": "ask",
+      "npm list*": "allow",
+
+      // bun
+      "bun *": "ask",
+      "bunx *": "ask",
+      "bun run dev": "allow",
+      "bun run serve": "allow",
+      "bun run build": "ask",
+      "bun run lint": "allow",
+      "bun run test*": "allow",
+      "bun install": "ask",
+      "bun pm *": "ask",
+      "bun pm ls *": "allow",
+      "bun add *": "allow",
+      "bun run *": "allow",
+      "bun init *": "allow",
+      "bun list*": "allow",
+
+      "vite *": "allow"
+    }
+  }
+}

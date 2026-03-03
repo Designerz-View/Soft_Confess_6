@@ -1,0 +1,279 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "experimental": {
+    "dynamic_context_pruning": {
+      "enabled": true,
+      "notification": "detailed",
+      "turn_protection": {
+        "enabled": true,
+        "turns": 5
+      },
+      "protected_tools": [
+        "task",
+        "todowrite",
+        "todoread",
+        "lsp_rename",
+        "session_read",
+        "session_write",
+        "session_search"
+      ],
+      "strategies": {
+        "deduplication": {
+          "enabled": true
+        },
+        "supersede_writes": {
+          "enabled": true,
+          "aggressive": false
+        },
+        "purge_errors": {
+          "enabled": true,
+          "turns": 5
+        }
+      }
+    },
+    "task_system": true
+  },
+  "sisyphus": {
+    "tasks": {
+      "enabled": true,
+      "storage_path": ".sisyphus/tasks",
+      "claude_code_compat": true
+    }
+  },
+  "sisyphus_agent": {
+    "disabled": false,
+    "default_builder_enabled": false,
+    "planner_enabled": true,
+    "replace_plan": true
+  },
+  "background_task": {
+    "defaultConcurrency": 25,
+    "staleTimeoutMs": 200000
+  },
+  "git_master": {
+    "commit_footer": false,
+    "include_co_authored_by": false
+  },
+  "tmux": {
+    "enabled": false
+  },
+  "browser_automation_engine": {
+    "provider": "agent-browser"
+  },
+  "lsp": {
+    "typescript-language-server": {
+      "command": [
+        "typescript-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".ts",
+        ".tsx",
+        ".js",
+        ".jsx"
+      ],
+      "priority": 10
+    },
+    "marksman": {
+      "command": [
+        "marksman",
+        "server"
+      ],
+      "extensions": [
+        ".md",
+        ".mdc",
+        ".markdown"
+      ],
+      "priority": 10
+    },
+    "sqls": {
+      "command": [
+        "sqls"
+      ],
+      "extensions": [
+        ".sql"
+      ],
+      "priority": 10
+    },
+    "yaml-language-server": {
+      "command": [
+        "yaml-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".yml",
+        ".yaml"
+      ],
+      "priority": 10
+    },
+    "bash-language-server": {
+      "command": [
+        "bash-language-server",
+        "start"
+      ],
+      "extensions": [
+        ".sh",
+        ".bash"
+      ],
+      "priority": 10
+    },
+    "pyright": {
+      "command": [
+        "pyright-langserver",
+        "--stdio"
+      ],
+      "extensions": [
+        ".py"
+      ],
+      "priority": 10
+    }
+  },
+  "formatters": {
+    "javascript": {
+      "command": "bin/smart-format-js",
+      "args": [
+        "${file}"
+      ]
+    },
+    "typescript": {
+      "command": "bin/smart-format-js",
+      "args": [
+        "${file}"
+      ]
+    },
+    "shellscript": {
+      "command": "shfmt",
+      "args": [
+        "-i",
+        "4",
+        "-w",
+        "${file}"
+      ]
+    },
+    "dockerfile": {
+      "command": "dockerfmt",
+      "args": [
+        "-w",
+        "${file}"
+      ]
+    },
+    "css": {
+      "command": "prettier",
+      "args": [
+        "--write",
+        "${file}"
+      ]
+    },
+    "scss": {
+      "command": "prettier",
+      "args": [
+        "--write",
+        "${file}"
+      ]
+    },
+    "json": {
+      "command": "prettier",
+      "args": [
+        "--write",
+        "${file}"
+      ]
+    },
+    "jsonc": {
+      "command": "prettier",
+      "args": [
+        "--write",
+        "${file}"
+      ]
+    },
+    "yaml": {
+      "command": "prettier",
+      "args": [
+        "--write",
+        "${file}"
+      ]
+    },
+    "markdown": {
+      "command": "prettier",
+      "args": [
+        "--write",
+        "${file}"
+      ]
+    },
+    "python": {
+      "command": "black",
+      "args": [
+        "${file}"
+      ]
+    },
+    "sql": {
+      "command": "sqlfluff",
+      "args": [
+        "fix",
+        "--dialect",
+        "mysql",
+        "${file}"
+      ]
+    }
+  },
+  "agents": {
+    "sisyphus": {
+      "model": "anthropic/claude-opus-4-6"
+    },
+    "sisyphus-junior": {
+      "model": "anthropic/claude-sonnet-4-5-20250929"
+    },
+    "atlas": {
+      "model": "anthropic/claude-sonnet-4-5-20250929"
+    },
+    "prometheus": {
+      "model": "anthropic/claude-opus-4-6"
+    },
+    "metis": {
+      "model": "anthropic/claude-opus-4-6"
+    },
+    "momus": {
+      "model": "anthropic/claude-opus-4-6"
+    },
+    "hephaestus": {
+      "model": "anthropic/claude-sonnet-4-5-20250929"
+    },
+    "oracle": {
+      "model": "anthropic/claude-opus-4-6"
+    },
+    "librarian": {
+      "model": "anthropic/claude-sonnet-4-5-20250929"
+    },
+    "explore": {
+      "model": "anthropic/claude-haiku-4-5-20251001"
+    },
+    "multimodal-looker": {
+      "model": "anthropic/claude-sonnet-4-5-20250929"
+    }
+  },
+  "categories": {
+    "visual-engineering": {
+      "model": "anthropic/claude-sonnet-4-5-20250929"
+    },
+    "ultrabrain": {
+      "model": "anthropic/claude-opus-4-6"
+    },
+    "deep": {
+      "model": "anthropic/claude-sonnet-4-5-20250929"
+    },
+    "artistry": {
+      "model": "anthropic/claude-sonnet-4-5-20250929"
+    },
+    "quick": {
+      "model": "anthropic/claude-haiku-4-5-20251001"
+    },
+    "unspecified-low": {
+      "model": "anthropic/claude-haiku-4-5-20251001"
+    },
+    "unspecified-high": {
+      "model": "anthropic/claude-sonnet-4-5-20250929"
+    },
+    "writing": {
+      "model": "anthropic/claude-haiku-4-5-20251001"
+    }
+  }
+}
